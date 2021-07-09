@@ -8,6 +8,12 @@
 </head>
 <body>
     {% for recipy in recipes %}
+        {{ recipy.recipy_name }}<br>
+        {{ recipy.category_name }}<br>
+        {{ recipy.cooking_time }}<br>
+        {{ recipy.ingredients }}<br>
+        {{ recipy.preparation }}<br>
+        {{ recipy.pricing }}<br>
     {% endfor %}
 </body>
 </html>
