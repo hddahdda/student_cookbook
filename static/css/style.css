@@ -17,6 +17,8 @@
 	margin-left: 3rem;
 }
 
+/************* Materialize css for fixed footer*/
+
 body {
     display: flex;
     min-height: 100vh;
@@ -26,6 +28,8 @@ body {
   main {
     flex: 1 0 auto;
   }
+
+  /******** Social Media Icons in footer */
 
   .socialicons {
     margin-right: 1rem;
