@@ -19,20 +19,26 @@
 	<header>
         <nav>
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">A Student's Cookbook</a>
-				<a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                <a href="{{ url_for('home') }}" class="brand-logo">A Student's Cookbook</a>
+				<a href="{{ url_for('home') }}" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
 				<ul class="right hide-on-med-and-down">
-                <li><a href="#">Log In</a></li>
-                <li><a href="{{ url_for('register') }}">Register</a></li>
-                <li><a href="#">View Recipes</a></li>
+                    <li><a href="#">Log In</a></li>
+                    <li><a href="#">Log Out</a></li>
+                    <li><a href="{{ url_for('register') }}">Register</a></li>
+                    <li><a href="{{ url_for('recipes') }}">View Recipes</a></li>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="#">Add Recipy</a></li>
               </ul>
             </div>
           </nav>
         
           <ul class="sidenav" id="mobile-demo">
             <li><a href="#">Log In</a></li>
+            <li><a href="#">Log Out</a></li>
             <li><a href="{{ url_for('register') }}">Register</a></li>
-            <li><a href="#">View Recipes</a></li>
+            <li><a href="{{ url_for('recipes') }}">View Recipes</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Add Recipy</a></li>
           </ul>
     </header>
 
