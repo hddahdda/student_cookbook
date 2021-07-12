@@ -16,3 +16,21 @@
 	margin-top: 9rem;
 	margin-left: 3rem;
 }
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  .socialicons {
+    margin-right: 1rem;
+  }
+
+  .socialicons i {
+  color: var(--honey);
+  }

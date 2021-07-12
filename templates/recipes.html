@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-    
+<main>
     <h2>Recipes</h2>
     {% for recipe in recipes %}
         {{ recipe.recipy_name }}<br>
@@ -10,5 +10,5 @@
         {{ recipe.preparation }}<br>
         {{ recipe.pricing }}<br>
     {% endfor %}
-
+</main>
 {% endblock %}
