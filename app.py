@@ -35,8 +35,8 @@ def register():
         username_exist = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         if username_exist:
-            """flash("This username is already in use, please choose a different username")
-            """
+            flash("This username is already in use, please choose a different username.")
+
             return redirect(url_for("register"))
 
         register = {
@@ -46,8 +46,8 @@ def register():
         mongo.db.users.insert_one(register)
 
         session["user"] = request.form.get("username").lower()
-        """flash("You are now registred")
-        """
+        flash("You are now registred")
+
         return render_template("profile.html")
     return render_template("register.html")
 
@@ -66,9 +66,11 @@ def login():
                         "profile", username=session["user"]))
 
             else:
+                flash("The username or password was incorrect, please try again.")
                 return redirect(url_for("login"))
 
         else:
+            flash("The username or password was incorrect, please try again.")
             return redirect(url_for("login"))
 
     return render_template("login.html")
@@ -79,6 +81,12 @@ def profile(username):
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
     return render_template("profile.html", username=username)
+
+
+@app.route("/logout")
+def logout():
+    if session.pop("user"):
+        return render_template("index.html")
 
 
 if __name__ == "__main__":
