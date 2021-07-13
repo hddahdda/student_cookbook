@@ -38,7 +38,7 @@ def register():
             """flash("This username is already in use, please choose a different username")
             """
             return redirect(url_for("register"))
-        
+
         register = {
             "username": request.form.get("username").lower(),
             "password": generate_password_hash(request.form.get("password"))
@@ -49,6 +49,26 @@ def register():
         """flash("You are now registred")
         """
     return render_template("register.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username_exist = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if username_exist:
+            if check_password_hash(
+                username_exist["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+
+            else:
+                return redirect(url_for("login"))
+
+        else:
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
 
 
 if __name__ == "__main__":
