@@ -23,20 +23,13 @@
                   <img src="images/sample-1.jpg">
                 </div>
                 <div class="card-content">
-                  <h4 class="card-title">{{ recipe.recipy_name }}</h4>
+                  <h4 class="card-title">{{ recipe.recipe_name }}</h4>
                   <p><i class="fas fa-folder"></i> Category: {{ recipe.category_name }}</p><br>
                   <p><i class="far fa-clock"></i> Cooking time: {{ recipe.cooking_time }}</p><br>
                   <p><i class="fas fa-carrot"></i> Ingredients: {{ recipe.ingredients }}</p><br>
                   <p><i class="fas fa-coins"></i> Estimated pricing: {{ recipe.pricing }}</p><br>
-                  <ul class="collapsible">
-                    <li>
-                      <div class="collapsible-header">Preparation</div>
-                      <div class="collapsible-body"><span>{{ recipe.preparation }}</span></div>
-                    </li>
+                    <a href="" class="waves-effect waves-light btn-large">View Recipe</a>
                   </div>
-                </div>
-                <div class="card-action">
-                  <a href="#">This is a link</a>
                 </div>
               </div>
               {% endfor %} 

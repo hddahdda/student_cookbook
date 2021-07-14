@@ -66,7 +66,8 @@ def login():
                         "profile", username=session["user"]))
 
             else:
-                flash("The username or password was incorrect, please try again.")
+                flash(
+                    "The username or password was incorrect, please try again.")
                 return redirect(url_for("login"))
 
         else:
