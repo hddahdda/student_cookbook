@@ -21,13 +21,13 @@
               <div class="card">
                 <div class="card-image">
                   <img src="images/sample-1.jpg">
-                  <h4 class="card-title green darken-4">{{ recipe.recipy_name }}</h4>
                 </div>
                 <div class="card-content">
-                  <p>{{ recipe.category_name }}</p><br>
-                  <p>{{ recipe.cooking_time }}</p><br>
-                  <p>{{ recipe.ingredients }}</p><br>
-                  <p>{{ recipe.pricing }}</p><br>
+                  <h4 class="card-title">{{ recipe.recipy_name }}</h4>
+                  <p><i class="fas fa-folder"></i> Category: {{ recipe.category_name }}</p><br>
+                  <p><i class="far fa-clock"></i> Cooking time: {{ recipe.cooking_time }}</p><br>
+                  <p><i class="fas fa-carrot"></i> Ingredients: {{ recipe.ingredients }}</p><br>
+                  <p><i class="fas fa-coins"></i> Estimated pricing: {{ recipe.pricing }}</p><br>
                   <ul class="collapsible">
                     <li>
                       <div class="collapsible-header">Preparation</div>
@@ -39,15 +39,10 @@
                   <a href="#">This is a link</a>
                 </div>
               </div>
-            </div>
-            {% endfor %}     
+              {% endfor %} 
+            </div>    
           </div>
-                 
-        
-        <br>
-        <!-------------->
-
-        
-    
+          
+                   
 </main>
 {% endblock %}
