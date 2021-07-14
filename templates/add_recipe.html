@@ -30,17 +30,17 @@
               <option value="{{ cooking.cooking_time }}">{{ cooking.cooking_time }}</option>
           {% endfor %}
         </select>
-        <label>Materialize Select</label>
+        <label for="cooking_time">Cooking Time</label>
       </div>
       <div class="input-field col s12">
-        <select>
+        <select id="pricing" name="pricing"
+         class="validate" required>
           <option value="" disabled selected>Estimated Pricing</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
+          {% for price in pricing %}
+              <option value="{{ price.pricing }}">{{ price.pricing }}</option>
+          {% endfor %}
         </select>
-        <label>Materialize Select</label>
-      </div>
+        <label for="pricing">Estimated Pricing</label>
       <div class="row">
         <div class="input-field col s12">
           <textarea id="preparation" name="preparation"
