@@ -23,11 +23,12 @@
         <label for="category_name">Category</label>
       </div>
       <div class="input-field col s12">
-        <select>
-          <option value="" disabled selected>Cooking time</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
+        <select id="cooking_time" name="cooking_time"
+         class="validate" required>
+          <option value="" disabled selected>Cooking Time</option>
+          {% for cooking in cooking_time %}
+              <option value="{{ cooking.cooking_time }}">{{ cooking.cooking_time }}</option>
+          {% endfor %}
         </select>
         <label>Materialize Select</label>
       </div>
