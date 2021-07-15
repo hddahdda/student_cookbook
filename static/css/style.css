@@ -39,7 +39,7 @@ body {
   color: var(--honey);
   }
 
-  img{
+  .foodimage {
     max-width: 30rem;
     max-height: 30rem;
   }
