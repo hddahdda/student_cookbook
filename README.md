@@ -46,6 +46,11 @@ As previously elaborated in the "About" section the conecpt of this website is t
 * For the user to be able to edit and/or deletetheir own recipes from their profile page.
 
 
+### Bugs
+* When adding a new recipe to the database this appears in the middle of the row below the other recipes, this doesn't affect functionality, however It looks odd and misplaced.
+
+* When adding a new recipe to the database, the chosen pricing and cooking time also gets added to the database, so the same value reappears in the dropdown menu. This, I think, will have to be resolved by manually adding these as separate objects to the database instead of, as it is for the moment, only appearing in database as separate keys in different objects. 
+
 https://unsplash.com/photos/12eHC6FxPyg
 
 
