@@ -112,7 +112,10 @@ def add_recipe():
         "pricing", 1)
     cooking_time = mongo.db.recipes.find().sort(
         "cooking_time", 1)
-    return render_template("add_recipe.html", categories=categories, pricing=pricing, cooking_time=cooking_time)
+    return render_template("add_recipe.html",
+                           categories=categories,
+                           pricing=pricing,
+                           cooking_time=cooking_time)
 
 
 if __name__ == "__main__":
