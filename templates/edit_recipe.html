@@ -8,16 +8,20 @@
       <div class="row">
         <div class="input-field col s12">
           <input id="recipe_name" name="recipe_name" minlength="3" maxlength="70"
-           type="text" class="validate" required>
+            value="{{ recipe.recipe_name }}" type="text" class="validate" required>
           <label for="recipe_name">Recipe Name</label>
         </div>
       </div>
       <div class="input-field col s12">
         <select id="category_name" name="category_name"
          class="validate" required>
-          <option value="" disabled selected>Choose Category</option>
+          <option value="" selected>Choose Category</option>
           {% for category in categories %}
-              <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+             {% if category.category_name == recipe.category_name %}
+                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+             {% else %}
+                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+             {% endif %}
           {% endfor %}
         </select>
         <label for="category_name">Category</label>
@@ -27,7 +31,11 @@
          class="validate" required>
           <option value="" disabled selected>Cooking Time</option>
           {% for cooking in cooking_time %}
-              <option value="{{ cooking.cooking_time }}">{{ cooking.cooking_time }}</option>
+             {% if cooking.cooking_time == recipe.cooking_time %}
+              <option value="{{ cooking.cooking_time }}" selected>{{ cooking.cooking_time }}</option>
+             {% else %}
+             <option value="{{ cooking.cooking_time }}">{{ cooking.cooking_time }}</option>
+             {% endif %}
           {% endfor %}
         </select>
         <label for="cooking_time">Cooking Time</label>
@@ -37,21 +45,27 @@
          class="validate" required>
           <option value="" disabled selected>Estimated Pricing</option>
           {% for price in pricing %}
-              <option value="{{ price.pricing }}">{{ price.pricing }}</option>
+             {% if price.pricing == recipe.pricing %}
+              <option value="{{ price.pricing }}" selected>{{ price.pricing }}</option>
+             {% else %}
+             <option value="{{ price.pricing }}" selected>{{ price.pricing }}</option>
+             {% endif %}
           {% endfor %}
         </select>
         <label for="pricing">Estimated Pricing</label>
       <div class="row">
         <div class="input-field col s12">
           <textarea id="ingredients" name="ingredients"
-           minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
+           minlength="5" maxlength="200" class="materialize-textarea validate" required>
+           {{- recipe.ingredients -}}</textarea>
           <label for="ingredients">Ingredients</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
           <textarea id="preparation" name="preparation"
-           minlength="10" maxlength="1000" class="materialize-textarea validate" required></textarea>
+           minlength="10" maxlength="1000" class="materialize-textarea validate" required>
+          {{- recipe.preparation -}}</textarea>
           <label for="preparation">Preparation</label>
         </div>
       </div>
