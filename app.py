@@ -122,7 +122,24 @@ def add_recipe():
 def single_recipe(recipe_id):
     chosen_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     return render_template("single_recipe.html",
-                            recipe=chosen_recipe)
+                           recipe=chosen_recipe)
+
+
+@app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
+def edit_recipe(recipe_id):
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+
+    categories = mongo.db.categories.find().sort(
+        "category_name", 1)
+    pricing = mongo.db.recipes.find().sort(
+        "pricing", 1)
+    cooking_time = mongo.db.recipes.find().sort(
+        "cooking_time", 1)
+    return render_template("edit_recipe.html",
+                           recipe=recipe,
+                           categories=categories,
+                           pricing=pricing,
+                           cooking_time=cooking_time)
 
 
 if __name__ == "__main__":
