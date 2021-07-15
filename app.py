@@ -35,7 +35,7 @@ def register():
         username_exist = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         if username_exist:
-            flash("This username is already in use, please choose a different username.")
+            flash("This username is already in use, please choose a different one.")
 
             return redirect(url_for("register"))
 
@@ -90,8 +90,22 @@ def logout():
         return render_template("index.html")
 
 
-@app.route("/add_recipe")
+@app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
+    if request.method == "POST":
+        recipe = {
+            "category_name": request.form.get("category_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "pricing": request.form.get("pricing"),
+            "cooking_time": request.form.get("cooking_time"),
+            "ingredients": request.form.getlist("ingredients"),
+            "preparation": request.form.get("preparation"),
+            "created_by": session["user"]
+        }
+        mongo.db.recipes.insert_one(recipe)
+        flash("Recipe Successfully Added")
+        return redirect(url_for("recipes"))
+
     categories = mongo.db.categories.find().sort(
         "category_name", 1)
     pricing = mongo.db.recipes.find().sort(

@@ -4,7 +4,7 @@
 <h3 class="center-align">Add Recipe</h3>
 <div class="container">
 <div class="row card-panel center-align">
-    <form class="col s12 center-align" method="POST" action="">
+    <form class="col s12 center-align" method="POST" action="{{ url_for('add_recipe') }}">
       <div class="row">
         <div class="input-field col s12">
           <input id="recipe_name" name="recipe_name" minlength="3" maxlength="70"
@@ -43,9 +43,9 @@
         <label for="pricing">Estimated Pricing</label>
       <div class="row">
         <div class="input-field col s12">
-          <textarea id="preparation" name="preparation"
-           minlength="10" maxlength="200" class="materialize-textarea validate" required></textarea>
-          <label for="preparation">Ingredients</label>
+          <textarea id="ingredients" name="ingredients"
+           minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
+          <label for="ingredients">Ingredients</label>
         </div>
       </div>
       <div class="row">
