@@ -127,6 +127,19 @@ def single_recipe(recipe_id):
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    if request.method == "POST":
+        edit = {
+            "category_name": request.form.get("category_name"),
+            "recipe_name": request.form.get("recipe_name"),
+            "pricing": request.form.get("pricing"),
+            "cooking_time": request.form.get("cooking_time"),
+            "ingredients": request.form.getlist("ingredients"),
+            "preparation": request.form.get("preparation"),
+            "created_by": session["user"]
+        }
+        mongo.db.recipes.update({"_id": ObjectId(recipe_id)}, edit)
+        flash("Recipe Successfully Edited")
+
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
 
     categories = mongo.db.categories.find().sort(
@@ -140,6 +153,13 @@ def edit_recipe(recipe_id):
                            categories=categories,
                            pricing=pricing,
                            cooking_time=cooking_time)
+
+
+@app.route("/delete_recipe/<recipe_id>")
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+    flash ("Recipe was deleted")
+    return redirect(url_for("recipes"))
 
 
 if __name__ == "__main__":
