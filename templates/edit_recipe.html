@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<main>
+<h3 class="center-align">Edit Recipe</h3>
+<div class="container">
+<div class="row card-panel center-align">
+    <form class="col s12 center-align" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id) }}">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="recipe_name" name="recipe_name" minlength="3" maxlength="70"
+           type="text" class="validate" required>
+          <label for="recipe_name">Recipe Name</label>
+        </div>
+      </div>
+      <div class="input-field col s12">
+        <select id="category_name" name="category_name"
+         class="validate" required>
+          <option value="" disabled selected>Choose Category</option>
+          {% for category in categories %}
+              <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+          {% endfor %}
+        </select>
+        <label for="category_name">Category</label>
+      </div>
+      <div class="input-field col s12">
+        <select id="cooking_time" name="cooking_time"
+         class="validate" required>
+          <option value="" disabled selected>Cooking Time</option>
+          {% for cooking in cooking_time %}
+              <option value="{{ cooking.cooking_time }}">{{ cooking.cooking_time }}</option>
+          {% endfor %}
+        </select>
+        <label for="cooking_time">Cooking Time</label>
+      </div>
+      <div class="input-field col s12">
+        <select id="pricing" name="pricing"
+         class="validate" required>
+          <option value="" disabled selected>Estimated Pricing</option>
+          {% for price in pricing %}
+              <option value="{{ price.pricing }}">{{ price.pricing }}</option>
+          {% endfor %}
+        </select>
+        <label for="pricing">Estimated Pricing</label>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="ingredients" name="ingredients"
+           minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
+          <label for="ingredients">Ingredients</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="preparation" name="preparation"
+           minlength="10" maxlength="1000" class="materialize-textarea validate" required></textarea>
+          <label for="preparation">Preparation</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12 center-align">
+            <button type="submit" class="btn-large text-shadow">
+                Edit Recipe
+            </button>
+        </div>
+    </form>
+  </div>
+</div>
+</div>
+
+
+</main>
+{% endblock %}
