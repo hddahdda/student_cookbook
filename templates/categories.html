@@ -13,8 +13,10 @@
               <span class="card-title">{{ category.category_name }}</span>
             </div>
             <div class="card-action">
+            {% if session.user|lower == "admin"|lower  %}
               <a href="#" class="waves-effect waves-light btn-small green darken-4 categorybutton"><i class="fas fa-user-edit"></i> Edit Category</a>
-              <a href="#" class="waves-effect waves-light btn-small red darken-4 categorybutton"><i class="fas fa-trash-alt"></i> Delete Category</a></a>
+              <a href="#" class="waves-effect waves-light btn-small red darken-4 categorybutton"><i class="fas fa-trash-alt"></i> Delete Category</a>
+            {% endif %}
             </div>
           </div>
         </div>
