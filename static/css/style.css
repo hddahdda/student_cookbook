@@ -40,10 +40,18 @@ body {
   }
 
   .foodimage {
-    max-width: 30rem;
-    max-height: 30rem;
+  max-width: 30rem;
+  max-height: 30rem;
   }
 
   .categorybutton {
-    margin: 0.2rem;
+  margin: 0.2rem;
+  }
+
+  .addcategory {
+  margin: 2rem;
+  }
+
+  .addcategory a {
+  border-radius: 40px;
   }
