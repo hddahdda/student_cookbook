@@ -85,8 +85,8 @@ def profile(username):
 
 @app.route("/logout")
 def logout():
-    if session.pop("user"):
-        return render_template("index.html")
+    session.pop("user")
+    return redirect(url_for("home"))
 
 
 @app.route("/add_recipe", methods=["GET", "POST"])
