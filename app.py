@@ -59,11 +59,10 @@ def login():
             {"username": request.form.get("username").lower()})
 
         if username_exist:
-            if check_password_hash(
-                username_exist["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username").lower()
-                    return redirect(url_for(
-                        "profile", username=session["user"]))
+            if check_password_hash(username_exist["password"],
+            request.form.get("password")):
+                session["user"] = request.form.get("username").lower()
+                return redirect(url_for("profile", username=session["user"]))
 
             else:
                 flash(
@@ -108,9 +107,9 @@ def add_recipe():
 
     categories = mongo.db.categories.find().sort(
         "category_name", 1)
-    pricing = mongo.db.recipes.find().sort(
+    pricing = mongo.db.pricing.find().sort(
         "pricing", 1)
-    cooking_time = mongo.db.recipes.find().sort(
+    cooking_time = mongo.db.cooking_time.find().sort(
         "cooking_time", 1)
     return render_template("add_recipe.html",
                            categories=categories,
@@ -144,9 +143,9 @@ def edit_recipe(recipe_id):
 
     categories = mongo.db.categories.find().sort(
         "category_name", 1)
-    pricing = mongo.db.recipes.find().sort(
+    pricing = mongo.db.pricing.find().sort(
         "pricing", 1)
-    cooking_time = mongo.db.recipes.find().sort(
+    cooking_time = mongo.db.cooking_time.find().sort(
         "cooking_time", 1)
     return render_template("edit_recipe.html",
                            recipe=recipe,
@@ -188,7 +187,7 @@ def add_category():
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Categort was deleted")
+    flash("Category was deleted")
     return redirect(url_for("get_categories"))
 
 
@@ -198,7 +197,7 @@ def edit_category(category_id):
         edit = {
             "category_name": request.form.get("category_name")
         }
-        mongo.db.categories.update({"_id": ObjectId(category_id)},edit)
+        mongo.db.categories.update({"_id": ObjectId(category_id)}, edit)
         flash("Category was updated!")
         return redirect(url_for("get_categories"))
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
