@@ -43,3 +43,7 @@ body {
     max-width: 30rem;
     max-height: 30rem;
   }
+
+  .categorybutton {
+    margin: 0.2rem;
+  }
