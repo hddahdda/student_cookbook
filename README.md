@@ -51,6 +51,12 @@ As previously elaborated in the "About" section the conecpt of this website is t
 
 * When adding a new recipe to the database, the chosen pricing and cooking time also gets added to the database, so the same value reappears in the dropdown menu. This, I think, will have to be resolved by manually adding these as separate objects to the database instead of, as it is for the moment, only appearing in database as separate keys in different objects. 
 
+### Credits 
+* "Flask Mini-Project" which is one module from Code Institutes course was of big use when creating my project. This was of big help regarding how to structure the work, learning Materialize and naming conventions. Quite a lot of my websites design is partly based on this module.
+* Code snippet from "Flask Mini Project" that is located in static/js/script.js file. This code snippet allows the Materialize dropdown menu to actually be "reqired" as it otherwise defaults to not required.
+
+#### Images
+These are the images uploaded manually by me to the website, however images uploaded or, more accurately, linked to by other users will not be able to be credited. 
 https://unsplash.com/photos/12eHC6FxPyg
 
 
