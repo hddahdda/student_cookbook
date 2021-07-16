@@ -23,17 +23,28 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-  }
+    background-color: #F1F8F4;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+ }
 
-  main {
+main {
     flex: 1 0 auto;
   }
 
+.brand-logo {
+font-family: 'Anton', sans-serif;
+margin-left: 1rem;
+text-shadow: 2px 2px hsla(150, 88%, 28%, 0.74);
+}
+
   /******** Social Media Icons in footer */
 
-  .socialicons {
-    margin-right: 1rem;
-  }
+.socialicons {
+margin-right: 1rem;
+}
 
   .socialicons i {
   color: var(--honey);
@@ -54,4 +65,8 @@ body {
 
   .addcategory a {
   border-radius: 40px;
+  }
+
+  .greengradient {
+    background-color: hsla(150, 50%, 50%, 0.33)
   }
