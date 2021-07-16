@@ -47,9 +47,12 @@ As previously elaborated in the "About" section the conecpt of this website is t
 
 
 ### Bugs
-* When adding a new recipe to the database this appears in the middle of the row below the other recipes, this doesn't affect functionality, however It looks odd and misplaced.
+* Bug 1: When adding a new recipe to the database this appears in the middle of the row below the other recipes, this doesn't affect functionality, however It looks odd and misplaced.
 
-* When adding a new recipe to the database, the chosen pricing and cooking time also gets added to the database, so the same value reappears in the dropdown menu. This, I think, will have to be resolved by manually adding these as separate objects to the database instead of, as it is for the moment, only appearing in database as separate keys in different objects. 
+Update Bug 1: After making the changes described above, changing "pricing" and "cooking_time" to be separate objects instead of keys, the choices does no longer add one choice every time a recipe is added. However when browsing the "estimated pricing" dropdown menu the prices are not in the correct order. It probably needs to be sorted in a different way.
+
+
+* Bug 2: When adding a new recipe to the database, the chosen pricing and cooking time also gets added to the database, so the same value reappears in the dropdown menu. This, I think, will have to be resolved by manually adding these as separate objects to the database instead of, as it is for the moment, only appearing in database as separate keys in different objects. 
 
 ### Credits 
 * "Flask Mini-Project" which is one module from Code Institutes course was of big use when creating my project. This was of big help regarding how to structure the work, learning Materialize and naming conventions. Quite a lot of my websites design is partly based on this module.

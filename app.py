@@ -144,9 +144,9 @@ def edit_recipe(recipe_id):
     categories = mongo.db.categories.find().sort(
         "category_name", 1)
     pricing = mongo.db.pricing.find().sort(
-        "pricing", 1)
+        "pricing")
     cooking_time = mongo.db.cooking_time.find().sort(
-        "cooking_time", 1)
+        "cooking_time")
     return render_template("edit_recipe.html",
                            recipe=recipe,
                            categories=categories,
