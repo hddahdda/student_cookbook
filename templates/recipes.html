@@ -2,10 +2,16 @@
 {% block content %}
 <main>
     <h3 class="center-align">Recipes</h2>
+      <div class="row card-panel">
+        <div class="col s6">
+          <h4>Search Recipe</h4>
+        </div>
+        <form action="#" method="post" class="col s12 m6 l6"></form>
+      </div>
       
         <div class="row">
           {% for recipe in recipes %}
-            <div class="col s3">
+            <div class="col s2">
               <div class="card">
                 <div class="card-image">
                   <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80">
@@ -14,7 +20,6 @@
                   <h4 class="card-title">{{ recipe.recipe_name }}</h4>
                   <p><i class="fas fa-folder"></i> Category: {{ recipe.category_name }}</p><br>
                   <p><i class="far fa-clock"></i> Cooking time: {{ recipe.cooking_time }}</p><br>
-                  <p><i class="fas fa-carrot"></i> Ingredients: {{ recipe.ingredients }}</p><br>
                   <p><i class="fas fa-coins"></i> Estimated pricing: {{ recipe.pricing }}</p><br>
                   <p>Added by: {{ recipe.created_by }}</p>
                     <a href="{{url_for('single_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn-large green darken-4"><i class="fas fa-utensils"></i> View Recipe</a>

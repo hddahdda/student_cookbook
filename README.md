@@ -44,7 +44,10 @@ As previously elaborated in the "About" section the conecpt of this website is t
 ## Features left to include
 * For the user to be able to star a recipy and thereby get access to these on their profile page.
 * For the user to be able to edit and/or deletetheir own recipes from their profile page.
-
+* 404 Not Found, 500 internal error, 403 forbidden. 
+https://flask.palletsprojects.com/en/1.1.x/patterns/errorpages/
+* For the user to be able to add a recipe image (using a link as a image source)
+* Search recipes functionality 
 
 ### Bugs
 * Bug 1: When adding a new recipe to the database this appears in the middle of the row below the other recipes, this doesn't affect functionality, however It looks odd and misplaced.
@@ -61,5 +64,7 @@ Update Bug 1: After making the changes described above, changing "pricing" and "
 #### Images
 These are the images uploaded manually by me to the website, however images uploaded or, more accurately, linked to by other users will not be able to be credited. 
 https://unsplash.com/photos/12eHC6FxPyg
+
+
 
 
