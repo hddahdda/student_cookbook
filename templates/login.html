@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 <main>
+  <!------Log In -->
 <h3 class="center-align">Log In</h2> 
         <div class="container">
             <div class="row">
                 <form class="col s12" method="POST" action="{{ url_for('login') }}">
                   <div class="row">
+                    <!------Log in form with min+maxlength of characters, specified characters which can be used-->
                     <div class="input-field col s12">
                       <input placeholder="Enter your username" id="username" name="username" type="text" 
                       class="validate" minlength="3" maxlength="20" pattern="^[a-öA-Ö0-9]{3,20}$" required>
@@ -19,6 +21,7 @@
                       <label for="password">Password <i class="fas fa-key"></i></label>
                     </div>
                   </div>
+                  <!---- Log In-->
                   <button class="btn waves-effect waves-light" type="submit">Log In
                   </button>
                 </form>

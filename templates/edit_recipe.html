@@ -17,10 +17,11 @@
          class="validate" required>
           <option value="" selected>Choose Category</option>
           {% for category in categories %}
-             {% if category.category_name == recipe.category_name %}
-                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+             {% if category.category_name == recipe.category_name %} <!-----If the categories match -->
+             <!---- The chosen recipe is prefilled-->
+                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option> 
              {% else %}
-                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                <option value="{{ category.category_name }}">{{ category.category_name }}</option> <!---- Otherwise not -->
              {% endif %}
           {% endfor %}
         </select>
@@ -32,8 +33,9 @@
           <option value="" disabled selected>Cooking Time</option>
           {% for cooking in cooking_time %}
              {% if cooking.cooking_time == recipe.cooking_time %}
-              <option value="{{ cooking.cooking_time }}" selected>{{ cooking.cooking_time }}</option>
-             {% else %}
+             <!---- Pre-selected section, as previosly noted, this time for cooking time-->
+              <option value="{{ cooking.cooking_time }}" selected>{{ cooking.cooking_time }}</option> 
+             {% else %} <!---- or else not-->
              <option value="{{ cooking.cooking_time }}">{{ cooking.cooking_time }}</option>
              {% endif %}
           {% endfor %}
@@ -46,21 +48,25 @@
           <option value="" disabled selected>Estimated Pricing</option>
           {% for price in pricing %}
              {% if price.pricing == recipe.pricing %}
+             <!---- Pre-selected Pricing-->
               <option value="{{ price.pricing }}" selected>{{ price.pricing }}</option>
              {% else %}
+             <!---- Otherwise not------->
              <option value="{{ price.pricing }}" selected>{{ price.pricing }}</option>
              {% endif %}
           {% endfor %}
         </select>
         <label for="pricing">Estimated Pricing</label>
       <div class="row">
+        <!--------Ingredients section, with max and minmum length of characters-->
         <div class="input-field col s12">
           <textarea id="ingredients" name="ingredients"
-           minlength="5" maxlength="200" class="materialize-textarea validate" required>
+           minlength="5" maxlength="200" class="materialize-textarea validate" required> 
            {{- recipe.ingredients -}}</textarea>
           <label for="ingredients">Ingredients</label>
         </div>
       </div>
+      <!--------- Preparation Field, with min and maximum length-->
       <div class="row">
         <div class="input-field col s12">
           <textarea id="preparation" name="preparation"
@@ -69,6 +75,7 @@
           <label for="preparation">Preparation</label>
         </div>
       </div>
+      <!---- Buttons for returning to the previous page aswell as editing the recipe-->
       <div class="row">
         <div class="col s12 center-align">
           <a href="{{ url_for('single_recipe', recipe_id=recipe._id) }}" 
@@ -82,7 +89,5 @@
   </div>
 </div>
 </div>
-
-
 </main>
 {% endblock %}
