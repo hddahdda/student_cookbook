@@ -70,3 +70,7 @@ margin-right: 1rem;
   .greengradient {
     background-color: hsla(150, 22%, 94%, 0.74);
   }
+
+  .edit_recipe {
+    margin-right: 2rem;
+  }
