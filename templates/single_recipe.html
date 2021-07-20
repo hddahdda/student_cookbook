@@ -8,7 +8,13 @@
         <div class="card-content">
             <p><i class="fas fa-folder"></i> Category: {{ recipe.category_name }}</p><br>
             <p><i class="far fa-clock"></i> Cooking time: {{ recipe.cooking_time }}</p><br>
-            <p><i class="fas fa-carrot"></i> Ingredients:  {{ recipe.ingredients }}</p><br>
+            <div class="container card-panel col s12 m12 l12">
+            <ul>
+                <p>Ingredients: </p>
+                {% for ingredient in recipe.ingredients %}<br>
+                <i class="far fa-circle"></i> {{ ingredient }}
+                {% endfor %}     
+        </div>
             <p><i class="fas fa-coins"></i> Estimated pricing: {{ recipe.pricing }}</p><br>
             <p>Added by: {{ recipe.created_by }}</p>
         </div>
@@ -16,12 +22,16 @@
     <div class="col s12 m12 l3 z-depth-3 edit_recipe">
         <div class="card-content">
             <h5>Recipe Preparation</h5>
-       <p> {{ recipe.preparation }}</p><br>
+            <ol>
+            {% for prep in recipe.preparation %}
+            <li> {{ prep }} </li>
+            {% endfor %}
+            </ol>
     </div>
    </div>
    <div class="col s12 m12 l3">
     <div class="card-content">
-     <img src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80" alt="" class="foodimage">
+     <img src="{{ recipe.image_src }}" alt="image of recipe" class="foodimage">
 </div>
 </div>
 </div>
@@ -31,10 +41,10 @@
     <a href="{{ url_for('recipes') }}" class="waves-effect waves-light btn-large orange lighten-2"><i class="fas fa-backward"></i> Previous Page</a>
     {% if session.user|lower == recipe.created_by|lower %}
        <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-large green darken-4"><i class="fas fa-user-edit"></i> Edit Recipe</a>
-       <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-large red darken-4"><i class="fas fa-trash-alt"></i> Delete Recipe</a>
+       <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-large red darken-4 delete"><i class="fas fa-trash-alt"></i> Delete Recipe</a>
     {% elif session.user|lower == "admin"|lower  %}
     <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-large green darken-4"><i class="fas fa-user-edit"></i> Edit Recipe</a>
-    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-large red darken-4"><i class="fas fa-trash-alt"></i> Delete Recipe</a>
+    <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn-large red darken-4 delete"><i class="fas fa-trash-alt"></i> Delete Recipe</a>
     {% endif %}
 </main>
 {% endblock %}
