@@ -329,7 +329,7 @@ def edit_category(category_id):
     return render_template("edit_category.html", category=category)
 
 
-#Error Handlers
+# Error Handlers
 
 @app.errorhandler(404)
 def not_found(e):

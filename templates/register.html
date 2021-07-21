@@ -4,21 +4,25 @@
   <h3 class="center-align">Register</h2>
 <div class="container">
     <div class="row">
+      <!-----------Register as user details to MongoDB  -->
         <form class="col s12" method="POST" action="{{ url_for('register') }}">
           <div class="row">
             <div class="input-field col s12">
+              <!-----------Username between specific characters and which characters are allowed -->
               <input placeholder="Enter a username between 3-20 characters" id="username" name="username" type="text" 
               class="validate" minlength="3" maxlength="20" pattern="^[a-öA-Ö0-9]{3,20}$" required>
               <label for="first_name">Username <i class="fas fa-user"></i></label>
             </div>
           </div>
           <div class="row">
+            <!-----------Password between specific characters and which characters are allowed -->
             <div class="input-field col s12">
               <input placeholder="Enter a password betweeen 5-20 characters" id="password" name="password" type="password"
               minlength="5" maxlength="20" pattern="^[a-öA-Ö0-9]{3,20}$" class="validate" required>
               <label for="password">Password <i class="fas fa-key"></i></label>
             </div>
           </div>
+          <!-----------Submit button-->
           <button class="btn waves-effect waves-light" type="submit">Create User
           </button>
         </form>
