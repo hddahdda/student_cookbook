@@ -38,8 +38,9 @@ def recipes():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     """
-    Route to search functionality, using queries to search the database keys,
-    for example recipe name, category, ingredients.
+    Route to search functionality, using queries to search
+    the database keys, for example recipe name, category,
+    ingredients.
     """
     query = request.form.get("query")
     recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
@@ -59,7 +60,8 @@ def register():
         username_exist = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
         if username_exist:
-            flash("This username is already in use, please choose a different one.")
+            flash(
+                "Username is already in use, please choose a different one.")
 
             return redirect(url_for("register"))
 
@@ -89,14 +91,15 @@ def login():
             {"username": request.form.get("username").lower()})
 
         if username_exist:
-            if check_password_hash(username_exist["password"],
-            request.form.get("password")):
+
+            if check_password_hash(
+                    username_exist["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 return redirect(url_for("profile", username=session["user"]))
 
             else:
                 flash(
-                    "The username or password was incorrect, please try again.")
+                    "Username or password was incorrect, please try again.")
                 return redirect(url_for("login"))
 
         else:
@@ -133,11 +136,18 @@ def add_recipe():
     """
     If the user is not logged in, i.e not in session the user is
     prompted to log in to add a recipe. Returns user to login page.
-
+    Methods: GET and POST to access and post to MongoDB
+    Recipe is created by POST method, .split() to split data to
+    better access it as lists in the singe_recipe page.
     """
     if 'user' not in session:
         flash("You need to be logged in to add recipes.")
         return redirect(url_for("login"))
+
+    recipe = mongo.db.recipes.find_one_or_404(ObjectId)
+
+    if recipe["created_by"].lower() != session['user'].lower():
+        return redirect(url_for("single_recipe", recipe_id=recipe['_id']))
 
     if request.method == "POST":
         recipe = {
@@ -169,13 +179,25 @@ def add_recipe():
 
 @app.route("/single_recipe/<recipe_id>")
 def single_recipe(recipe_id):
-    chosen_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    """
+    Render a single recipe page.
+    Args: recipe_id (string) to access the specific recipe by id in
+    MongoDB.
+    """
+    chosen_recipe = mongo.db.recipes.find_one_or_404({
+        "_id": ObjectId(recipe_id)})
     return render_template("single_recipe.html",
                            recipe=chosen_recipe)
 
 
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
+    """
+    Takes the same string argument as single_recipe. If the
+    user is not logged in they are returned to the login
+    page. If the recipe is created by its user they
+    are allowed to edit the recipe.
+    """
     if 'user' not in session:
         flash("You need to be logged in to edit a recipe.")
         return redirect(url_for("login"))
@@ -231,12 +253,28 @@ def delete_recipe(recipe_id):
 
 @app.route("/get_categories")
 def get_categories():
+    """
+    Finds categories and then sorts them alphabetically.
+    """
+    if 'user' not in session:
+        flash("You need to own this recipe to be able to delete it.")
+        return redirect(url_for("login"))
+
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("categories.html", categories=categories)
 
 
 @app.route("/add_category", methods=["GET", "POST"])
 def add_category():
+    """
+    For the user to add a category they need to be logges
+    in. What gets saved to the database is the category name
+    and created by. However only the creator of the database
+    has access to view who added which category as this is
+    not showcased in the same way as recipes.
+    The new category then gets inserted to the "categories"
+    object in the database.
+    """
     if 'user' not in session:
         flash("You need to be logged in to create a category.")
         return redirect(url_for("login"))
@@ -258,23 +296,40 @@ def add_category():
 
 @app.route("/delete_category/<category_id>")
 def delete_category(category_id):
-    mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash("Category was deleted")
-    return redirect(url_for("get_categories"))
+    """
+    Takes the argument of category_id.
+    Only the admin can delete categories
+    as this feature might be risky to allow
+    users to use freely.
+    """
+    category = mongo.db.categories.find_one_or_404(ObjectId(category_id))
+
+    if category["created_by"].lower() == "admin":
+        mongo.db.categories.remove({"_id": ObjectId(category_id)})
+        flash("Category was deleted")
+        return redirect(url_for("get_categories"))
 
 
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
 def edit_category(category_id):
-    if request.method == "POST":
-        edit = {
-            "category_name": request.form.get("category_name")
-        }
+    """
+    Args: category_id, only admin has access to editing existing
+    categories.
+    """
+    category = mongo.db.categories.find_one_or_404(ObjectId(category_id))
+
+    if category["created_by"].lower() == "admin":
+        if request.method == "POST":
+            edit = {
+                "category_name": request.form.get("category_name")}
         mongo.db.categories.update({"_id": ObjectId(category_id)}, edit)
         flash("Category was updated!")
         return redirect(url_for("get_categories"))
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
 
+
+#Error Handlers
 
 @app.errorhandler(404)
 def not_found(e):
