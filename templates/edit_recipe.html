@@ -61,8 +61,7 @@
         <!--------Ingredients section, with max and minmum length of characters-->
         <div class="input-field col s12">
           <textarea id="ingredients" name="ingredients"
-           minlength="5" maxlength="200" class="materialize-textarea validate" required> 
-           {{- recipe.ingredients -}}</textarea>
+           minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
           <label for="ingredients">Ingredients</label>
         </div>
       </div>
@@ -70,9 +69,14 @@
       <div class="row">
         <div class="input-field col s12">
           <textarea id="preparation" name="preparation"
-           minlength="10" maxlength="1000" class="materialize-textarea validate" required>
-          {{- recipe.preparation -}}</textarea>
+           minlength="10" maxlength="1000" class="materialize-textarea validate" required></textarea>
           <label for="preparation">Preparation</label>
+        </div>
+        </div>
+        <div class="input-field col s12">
+          <label for="image_src">Image of Recipe</label>
+            <input class="validate" id="image_src" name="image_src" type="url" pattern="https://.*"
+             required placeholder="Enter a valid image link to your image in the style as:http://">
         </div>
       </div>
       <!---- Buttons for returning to the previous page aswell as editing the recipe-->
