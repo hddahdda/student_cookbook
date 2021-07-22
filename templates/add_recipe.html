@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <main>
-  <!---- Add Recipe Form-->
+  <!--Add Recipe Form-->
 <h3 class="center-align">Add Recipe</h3> 
 <div class="container">
 <div class="row card-panel center-align">
@@ -9,28 +9,31 @@
       <div class="row">
         <div class="input-field col s12">
           <input id="recipe_name" name="recipe_name" minlength="3" maxlength="70" 
-           type="text" class="validate" required> <!------ Min + maxlength for input text-->
+           type="text" class="validate" required> <!--Min + maxlength for input text-->
           <label for="recipe_name">Recipe Name</label>
         </div>
       </div>
       <div class="input-field col s12">
+        <!--For loop to view categories in dropwdown menu-->
         <select id="category_name" name="category_name"
          class="validate" required>
           <option value="" disabled selected>Choose Category</option>
-          {% for category in categories %} <!------- For loop to view categories in dropwdown menu-->
-              <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+          {% for category in categories %} 
+              <option value="{{ category.category_name }}">{{ category.category_name }}
+              </option>
           {% endfor %}
         </select>
         <label for="category_name">Category</label>
-        <!------- Option for user to add a category-->
+        <!--Option for user to add a category-->
         <div><p>Can't Find a proper category for your recipe? 
-          <a href="{{ url_for('add_category') }}" class="waves-effect waves-light btn-small green darken-4">
+          <a href="{{ url_for('add_category') }}"
+           class="waves-effect waves-light btn-small green darken-4">
             Add Category</a></p></div>
       </div>
       <div class="input-field col s12">
         <select id="cooking_time" name="cooking_time"
          class="validate" required>
-         <!------- For loop to view cooking time in dropwdown menu-->
+         <!--For loop to view cooking time in dropwdown menu-->
           <option value="" disabled selected>Cooking Time</option>
           {% for cooking in cooking_time %}
               <option value="{{ cooking.cooking_time }}">{{ cooking.cooking_time }}</option>
@@ -41,7 +44,7 @@
       <div class="input-field col s12">
         <select id="pricing" name="pricing"
          class="validate" required>
-         <!------- For loop to view pricing in dropwdown menu-->
+         <!--For loop to view pricing in dropwdown menu-->
           <option value="" disabled selected>Estimated Pricing</option>
           {% for price in pricing %}
               <option value="{{ price.pricing }}">{{ price.pricing }}</option>
@@ -49,7 +52,7 @@
         </select>
         <label for="pricing">Estimated Pricing</label>
       <div class="row">
-        <!------ Ingredients section -->
+        <!--Ingredients section-->
         <div class="input-field col s12">
           <textarea id="ingredients" name="ingredients"
            minlength="5" maxlength="200" class="materialize-textarea validate" required></textarea>
@@ -57,22 +60,24 @@
         </div>
       </div>
       <div class="row">
-        <!------ How to section -->
+        <!---How to section-->
         <div class="input-field col s12">
           <textarea id="preparation" name="preparation"
-           minlength="10" maxlength="1000" class="materialize-textarea validate" required></textarea>
+           minlength="10" maxlength="1000" class="materialize-textarea validate"
+            required></textarea>
           <label for="preparation">Preparation</label>
         </div>
       </div>
-      <!-----------Image source input field -->
+      <!--Image source input field-->
       <div class="input-field col s12">
         <label for="image_src">Image of Recipe</label>
-          <input class="validate" id="image_src" name="image_src" type="url" pattern="https://.*"
+          <input class="validate" id="image_src" name="image_src"
+           type="url" pattern="https://.*"
            required placeholder="Enter a valid image link to your image in the style as:http://">
       </div>
     </div>
     </div>
-      <!------ Submit Recipe section -->
+      <!--Submit Recipe section-->
       <div class="row">
         <div class="col s12 center-align">
             <button type="submit" class="btn-large text-shadow green darken-4w">

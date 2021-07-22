@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-<!------- 403 Forbidden Error Page-->
+<!--403 Forbidden Error Page-->
 <main>
     <div class="container">
 <h1>403 Forbidden </h1>
 <h2>Sorry, this page could not be accessed.</h2>
-<a href="{{ url_for('home') }}" class="waves-effect waves-light btn-large orange lighten-2"><i class="fas fa-backward"></i> Home</a>
+<a href="{{ url_for('home') }}"
+ class="waves-effect waves-light btn-large orange lighten-2">
+ <i class="fas fa-backward"></i> Home</a>
 </div>
     
 </main>

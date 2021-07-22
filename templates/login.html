@@ -7,21 +7,27 @@
             <div class="row">
                 <form class="col s12" method="POST" action="{{ url_for('login') }}">
                   <div class="row">
-                    <!------Log in form with min+maxlength of characters, specified characters which can be used-->
+                    <!--Log in form with min+maxlength of characters, specified characters which can be used-->
                     <div class="input-field col s12">
-                      <input placeholder="Enter your username" id="username" name="username" type="text" 
-                      class="validate" minlength="3" maxlength="20" pattern="^[a-öA-Ö0-9]{3,20}$" required>
-                      <label for="first_name">Username <i class="fas fa-user"></i></label>
+                      <input placeholder="Enter your username" i
+                      d="username" name="username" type="text" 
+                      class="validate" minlength="3" maxlength="20" 
+                      pattern="^[a-öA-Ö0-9]{3,20}$" required>
+                      <label for="first_name">Username <i class="fas fa-user">
+                      </i></label>
                     </div>
                   </div>
                   <div class="row">
                     <div class="input-field col s12">
-                      <input placeholder="Enter your password" id="password" name="password" type="password"
-                      minlength="5" maxlength="20" pattern="^[a-öA-Ö0-9]{3,20}$" class="validate" required>
-                      <label for="password">Password <i class="fas fa-key"></i></label>
+                      <input placeholder="Enter your password" 
+                      id="password" name="password" type="password"
+                      minlength="5" maxlength="20" pattern="^[a-öA-Ö0-9]{3,20}$" 
+                      class="validate" required>
+                      <label for="password">Password 
+                        <i class="fas fa-key"></i></label>
                     </div>
                   </div>
-                  <!---- Log In-->
+                  <!--Log In-->
                   <button class="btn waves-effect waves-light" type="submit">Log In
                   </button>
                 </form>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <main>
-  <!----- Form for editing categories already in the database-->
+  <!--Form for editing categories already in the database-->
 <h3 class="center-align">Edit Category</h3>
 <div class="container">
 <div class="row card-panel center-align">
@@ -9,16 +9,19 @@
       ('edit_category', category_id=category._id) }}">
       <div class="row"> 
         <div class="input-field col s12">
+          <!--Categories are pre-filled-->
           <input id="category_name" name="category_name" minlength="3" maxlength="40"
-           type="text" value="{{ category.category_name }}" class="validate" required> <!----- Categories are pre-filled-->
+           type="text" value="{{ category.category_name }}" class="validate" required> 
           <label for="category_name">Category Name</label>
         </div>
       </div>
       </div>
        <div class="row">
-         <!-----------Buttons -->
+         <!--Buttons-->
         <div class="col s12 center-align">
-          <a href="{{ url_for('get_categories') }}" class="waves-effect waves-light btn-large orange lighten-2"><i class="fas fa-backward"></i> Previous Page</a>
+          <a href="{{ url_for('get_categories') }}" 
+          class="waves-effect waves-light btn-large orange lighten-2">
+          <i class="fas fa-backward"></i> Previous Page</a>
             <button type="submit" class="btn-large text-shadow green darken-4w">
               <i class="fas fa-plus-square"></i> Edit Category
             </button>
