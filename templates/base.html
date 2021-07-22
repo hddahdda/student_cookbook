@@ -19,7 +19,7 @@
 </head>
 <body>
 	<header>
-    <!---- Navbar -------------->
+    <!----Navbar-------------->
         <nav>
             <div class="nav-wrapper green lighten-1">
                 <a href="{{ url_for('home') }}" class="brand-logo">A Student's Cookbook</a>
@@ -31,7 +31,7 @@
                      <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                      <li><a href="{{ url_for('get_categories') }}">Categories</a></li>
                      <li><a href="{{ url_for('recipes') }}">View Recipes</a></li>
-                     {% else %} <!----- Else options to log in, register or view recipes-->
+                     {% else %} <!-----Else options to log in, register or view recipes-->
                      <li><a href="{{ url_for('login') }}">Log In</a></li>
                     <li><a href="{{ url_for('register') }}">Register</a></li>
                     <li><a href="{{ url_for('recipes') }}">View Recipes</a></li>
@@ -39,15 +39,17 @@
               </ul>
             </div>
           </nav>
-        <!-----Mobile Navbar ----------------->
+        <!-----Mobile Navbar----------------->
           <ul class="sidenav" id="mobile-demo">
-            {% if session.user %} <!------If user is logged in-->
+             <!------If user is logged in-->
+            {% if session.user %}
                 <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
                 <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
                 <li><a href="{{ url_for('get_categories') }}">Categories</a></li>
                 <li><a href="{{ url_for('recipes') }}">View Recipes</a></li>
-             {% else %} <!----- Else options to log in, register or view recipes-->
+                <!-----Else options to log in, register or view recipes-->
+             {% else %} 
                  <li><a href="{{ url_for('login') }}">Log In</a></li>
                 <li><a href="{{ url_for('register') }}">Register</a></li>
                  <li><a href="{{ url_for('recipes') }}">View Recipes</a></li>
@@ -59,19 +61,22 @@
     <div class="row">
       <div class="col s12">
         {% with messages = get_flashed_messages() %} 
-           {% if messages %} <!----- If there are any flashed messages -->
+        <!----- If there are any flashed messages -->
+           {% if messages %} 
               {% for message in messages %} 
-                <p>{{ message }}</p> <!----- Display them-->
+              <!----- Display them-->
+                <p>{{ message }}</p> 
               {% endfor %}
             {% endif %}
-        {% endwith %}</div>
+        {% endwith %}
+      </div>
     </div>
 </section>
 
 {% block content %}
 {% endblock %}
 
-<!----- Footer-->
+<!-----Footer-->
     <footer class="page-footer  green darken-4">
         <div class="container">
         </div>
