@@ -150,8 +150,6 @@ def add_recipe():
             "recipe_name": request.form.get("recipe_name"),
             "pricing": request.form.get("pricing"),
             "cooking_time": request.form.get("cooking_time"),
-            "ingredients": request.form.getlist("ingredients"),
-            "preparation": request.form.get("preparation"),
             "ingredients": request.form.get("ingredients").split("\n"),
             "preparation": request.form.get("preparation").split("\n"),
             "image_src": request.form.get("image_src"),
