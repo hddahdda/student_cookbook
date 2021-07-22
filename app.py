@@ -314,10 +314,11 @@ def edit_category(category_id):
     if category["created_by"].lower() == "admin":
         if request.method == "POST":
             edit = {
-                "category_name": request.form.get("category_name")}
-        mongo.db.categories.update({"_id": ObjectId(category_id)}, edit)
-        flash("Category was updated!")
-        return redirect(url_for("get_categories"))
+                "category_name": request.form.get("category_name")
+                }
+            mongo.db.categories.update({"_id": ObjectId(category_id)},edit)
+            flash("Category was updated!")
+            return redirect(url_for("get_categories"))
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
     return render_template("edit_category.html", category=category)
 
