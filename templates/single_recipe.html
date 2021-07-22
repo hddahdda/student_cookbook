@@ -18,8 +18,9 @@
             <ul>
                 {% for ingredient in recipe.ingredients %}
                 <li> {{ ingredient }} </li>
-                {% endfor %}     
-        </div>
+                {% endfor %} 
+            </ul>    
+            </div>
             <!--Added by user-->
             <p><i class="fas fa-coins">
             </i> Estimated pricing: {{ recipe.pricing }}</p><br>
@@ -66,6 +67,7 @@ avaliable to view edit and delete buttons-->
     <a href="{{ url_for('delete_recipe', recipe_id=recipe._id) }}"
      class="waves-effect waves-light btn-large red darken-4 delete"
      ><i class="fas fa-trash-alt"></i> Delete Recipe</a>
+   </div>
     {% endif %}
 </main>
 {% endblock %}
