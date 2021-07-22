@@ -296,7 +296,7 @@ def delete_category(category_id):
     users to use freely.
     """
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
-    flash ("Recipe was deleted")
+    flash("Recipe was deleted")
     return redirect(url_for("get_categories"))
 
 
@@ -313,7 +313,7 @@ def edit_category(category_id):
             edit = {
                 "category_name": request.form.get("category_name")
                 }
-            mongo.db.categories.update({"_id": ObjectId(category_id)},edit)
+            mongo.db.categories.update({"_id": ObjectId(category_id)}, edit)
             flash("Category was updated!")
             return redirect(url_for("get_categories"))
     category = mongo.db.categories.find_one({"_id": ObjectId(category_id)})
