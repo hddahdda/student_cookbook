@@ -281,6 +281,45 @@ Add Recipe |    The user should be able to add a recipe to the database| The use
 |  To be able to register to make sure that recipes added by them could not easily be edited or deleted by other users. | The user is able to register an account and thereby be granted permission to add, edit and delete their own recipes.
 |   A search bar which makes it possible to filter recipes by ingredients, recipy name, category etc. | Search bar is visible and working in the recipes.html page.  
 
+## Deployment 
+Website is hosted via [Heroku](http://student-cookbook-m3.herokuapp.com/) and stored in GitHub. The database used is MongoDB. 
+To clone this website you need to have created an account Heroku.
+
+### GitHub
+Clone this repository either by downloading it as a zip-file in the code section in GitHub, opening with GitHub desktop (this requires a GitHub account) or by writing `git clone -- https://github.com/hddahdda/student_cookbook.git` in your terminal.
+
+* In the terminal, write `pip3 freeze -- local > requirements.txt`. This should create a requirements list, these are needed for Heroku.
+* In the terminal, write: `python app.py > Procfile` to add the required procfile, also needed for Heroku.
+* Push these changes to GitHub using: 
+   * git add requirements.txt
+   * git add Procfile
+   * git commit -m "Added Procfile and reqirements.txt"
+   * git push
+
+Please make sure that these are in your requirements.txt file.
+
+    click==8.0.1
+    
+    dnspython==2.1.0
+    
+    Flask==2.0.1
+    
+    Flask-PyMongo==2.3.0
+    
+    itsdangerous==2.0.1
+    
+    pymongo==3.11.4
+    
+    Werkzeug==2.0.1
+
+### Heroku
+* Register an account at [Heroku.](https://id.heroku.com/login)
+* Navigate to "New" and choose "Create New app"
+* They will ask for details about region and what your app will be called. 
+* In your app in Heroku, navigate to "settings" page.
+* Click "Reveal config vars"
+* Enter your config vars that are stored in the env.py file, which is a hidden file. This should look something like this:
+
 
 ## Credits
 
