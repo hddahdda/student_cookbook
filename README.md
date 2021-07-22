@@ -320,6 +320,18 @@ Please make sure that these are in your requirements.txt file.
 * Click "Reveal config vars"
 * Enter your config vars that are stored in the env.py file, which is a hidden file. This should look something like this:
 
+    "IP", "0.0.0.0"
+    
+    "PORT", "5000"
+    
+    "SECRET_KEY", "secret_key_here"
+    
+    "MONGO_URI", "mongo_db_uri"
+    
+    "MONGO_DBNAME", "name_of_db"
+* To enable automated deployment navigate to "Deploy" in Heroku.
+* Enable Automatic branch by connecting to your GitHub repository.
+
 
 ## Credits
 
