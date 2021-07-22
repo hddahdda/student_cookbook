@@ -3,28 +3,36 @@
 	--honey: #FECEAB;
 }
 
+/************* Materialize css for fixed footer and font rules */
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: #F1F8F4;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+/************* Index.html page*/
+
 .infobox {
 	padding: 2rem;
 	margin-top: 9rem;
 	margin-left: 3rem;
 }
 
-/************* Materialize css for fixed footer*/
+.greengradient {
+  background-color: hsla(150, 22%, 94%, 0.74);
+}
 
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    background-color: #F1F8F4;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.5px;
- }
-
-main {
-    flex: 1 0 auto;
-  }
+/************* Brand Logo*/
 
 .brand-logo {
 font-family: 'Anton', sans-serif;
@@ -32,43 +40,67 @@ margin-left: 1rem;
 text-shadow: 2px 2px hsla(150, 88%, 28%, 0.74);
 }
 
-  /******** Social Media Icons in footer */
+/******** Social Media Icons in footer */
 
 .socialicons {
 margin-right: 1rem;
 }
 
-  .socialicons i {
-  color: var(--honey);
-  }
+.socialicons i {
+color: var(--honey);
+}
 
-  .foodimage {
-  max-width: 30rem;
-  max-height: 30rem;
-  }
+/************* Button */
 
-  .categorybutton {
-  margin: 0.2rem;
-  }
+.categorybutton {
+margin: 0.2rem;
+}
 
-  .addcategory {
-  margin: 2rem;
-  }
+/************* Add Category Page*/
 
-  .addcategory a {
-  border-radius: 40px;
-  }
+.addcategory {
+margin: 2rem;
+}
 
-  .greengradient {
-    background-color: hsla(150, 22%, 94%, 0.74);
-  }
+.addcategory a {
+ border-radius: 40px;
+}
+
+/************* Edit Recipe Page*/
 
   .edit_recipe {
     margin-right: 2rem;
   }
 
+/************* Images */
+
   .recipes_image {
     height: 500px; 
     width: 500px; 
     object-fit: cover;
+  }
+
+  .foodimage {
+    max-width: 30rem;
+    max-height: 30rem;
+    }
+
+/************* Media Queries */
+
+  @media (max-width: 600px) {
+    .nav-wrapper a{
+      font-size: 20px;
+      margin: 0;
+      height: 70px;
+      padding: 0;
+    }
+    }
+
+  @media (max-width: 430px) {
+    .nav-wrapper a{
+      font-size: 15px;
+      margin: 0;
+      height: 70px;
+      padding: 0;
+    }
   }
