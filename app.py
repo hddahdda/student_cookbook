@@ -144,23 +144,19 @@ def add_recipe():
         flash("You need to be logged in to add recipes.")
         return redirect(url_for("login"))
 
-    recipe = mongo.db.recipes.find_one_or_404(ObjectId)
-
-    if recipe["created_by"].lower() != session['user'].lower():
-        return redirect(url_for("single_recipe", recipe_id=recipe['_id']))
-
     if request.method == "POST":
         recipe = {
             "category_name": request.form.get("category_name"),
             "recipe_name": request.form.get("recipe_name"),
             "pricing": request.form.get("pricing"),
             "cooking_time": request.form.get("cooking_time"),
-            "ingredients": request.form.get("ingredients").split(
-                "\n", ",", "."),
+            "ingredients": request.form.getlist("ingredients"),
+            "preparation": request.form.get("preparation"),
+            "ingredients": request.form.get("ingredients").split("\n"),
             "preparation": request.form.get("preparation").split("\n"),
             "image_src": request.form.get("image_src"),
             "created_by": session["user"]
-            }
+        }
         mongo.db.recipes.insert_one(recipe)
         flash("Recipe Successfully Added")
         return redirect(url_for("recipes"))
@@ -213,8 +209,7 @@ def edit_recipe(recipe_id):
             "recipe_name": request.form.get("recipe_name"),
             "pricing": request.form.get("pricing"),
             "cooking_time": request.form.get("cooking_time"),
-            "ingredients": request.form.get("ingredients").split(
-                "\n", ",", "."),
+            "ingredients": request.form.get("ingredients").split("\n"),
             "preparation": request.form.get("preparation").split("\n"),
             "image_src": request.form.get("image_src"),
             "created_by": session["user"]
