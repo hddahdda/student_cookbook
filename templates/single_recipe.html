@@ -2,7 +2,7 @@
 {% block content %}
 <main>
     <!--Recipe header-->
-<h3 class="center-align">{{ recipe.recipe_name }}</h2>
+<h3 class="center-align">{{ recipe.recipe_name }}</h3>
 <div class="container">
 <div class="row">
     <div class="col s12 m6 l3 z-depth-3 edit_recipe">
@@ -14,10 +14,10 @@
             </i> Cooking time: {{ recipe.cooking_time }}</p><br>
             <div class="container card-panel col s12 m12 l12">
             <!---For loop for ingredients-->
+            <p>Ingredients: </p>
             <ul>
-                <p>Ingredients: </p>
-                {% for ingredient in recipe.ingredients %}<br>
-                <i class="far fa-circle"></i> {{ ingredient }}
+                {% for ingredient in recipe.ingredients %}
+                <li> {{ ingredient }} </li>
                 {% endfor %}     
         </div>
             <!--Added by user-->
