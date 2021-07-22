@@ -295,12 +295,9 @@ def delete_category(category_id):
     as this feature might be risky to allow
     users to use freely.
     """
-    category = mongo.db.categories.find_one_or_404(ObjectId(category_id))
-
-    if category["created_by"].lower() == "admin":
-        mongo.db.categories.remove({"_id": ObjectId(category_id)})
-        flash("Category was deleted")
-        return redirect(url_for("get_categories"))
+    mongo.db.categories.remove({"_id": ObjectId(category_id)})
+    flash ("Recipe was deleted")
+    return redirect(url_for("get_categories"))
 
 
 @app.route("/edit_category/<category_id>", methods=["GET", "POST"])
